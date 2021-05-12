@@ -1,4 +1,4 @@
-# COMP 305 Spring 2021 Project
+# COMP 305 Spring 2021 Project: Neighbors of Our Kingdom
 
 
 ## Implemented by:
