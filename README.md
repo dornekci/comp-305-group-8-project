@@ -2,10 +2,10 @@
 
 
 ## Implemented by:
-* Ahmet Kadir Zeybek
-* Doruk Örnekci
-* Ece Güz
-* Zeynep Sıla Kaya
+* Ahmet Kadir Zeybek 64509
+* Doruk Örnekci 64570
+* Ece Güz 69002
+* Zeynep Sıla Kaya 69101
 
 ## To Do List:
 * Learn how to use Git/Github for the project.
