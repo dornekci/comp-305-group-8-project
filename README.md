@@ -3,7 +3,7 @@
 
 ## Implemented by:
 * Ahmet Kadir Zeybek
-* Doruk Örnekçi
+* Doruk Örnekci
 * Ece Güz
 * Zeynep Sıla Kaya
 
