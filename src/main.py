@@ -76,15 +76,19 @@ def read_txt(path):
         j += 1
 
     graph.neighbors_from_edges()
-    return graph
+
 
     print("Input reading finished in %.8s seconds" % (time.time() - start_time))
 
+    return graph
+
 if __name__ == '__main__':
 
-    path = "C:\\Users\\doruk\\Desktop\\comp-305-group-8-project\\test3_new.txt"
+    path = "C:\\Users\\doruk\\Desktop\\comp-305-group-8-project\\test2_new.txt"
 
     graph = read_txt(path)
+    graph.info()
+
     testGraph = g.Graph()
 
     node0 = n.Node(0, 0, [0, 1, 1, 0], False)
