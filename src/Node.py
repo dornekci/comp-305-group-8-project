@@ -24,3 +24,7 @@ class Node:
 
         else:
             print("Neighbor is not in the neighbor list")
+
+    def sort_neighbors(self):
+
+        self.neighbors.sort()
