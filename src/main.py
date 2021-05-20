@@ -4,44 +4,11 @@ import Graph as g
 import numpy as np
 import time
 
+
 def read_txt(path):
-
-    testGraph = g.Graph()
-
-    node0 = n.Node(0, 0, [0, 1, 1, 0], False)
-    testGraph.add_node(node0)
-
-    node1 = n.Node(1, 1, [1, 0, 0, 0], False)
-    testGraph.add_node(node1)
-
-    node2 = n.Node(2, 2, [1, 0, 0, 1], False)
-    testGraph.add_node(node0)
-
-    node3 = n.Node(3, 0, [0, 1, 1, 0], False)
-    testGraph.add_node(node3)
-
-    node4 = n.Node(4, 1, [1,1,0,0], False)
-    testGraph.add_node(node4)
-
-    edge01 = e.Edge(0,1)
-    testGraph.add_edge(edge01)
-
-    edge02 = e.Edge(0,2)
-    testGraph.add_edge(edge02)
-
-    edge05 = e.Edge(0,5)
-    testGraph.add_edge(edge05)
-
-    edge27 = e.Edge(2,7)
-    testGraph.add_edge(edge27)
-    return 0
-
-if __name__ == '__main__':
 
     # For checking the runtime of the program
     start_time = time.time()
-
-    path = "C:\\Users\\doruk\\Desktop\\comp-305-group-8-project\\test3_new.txt"
 
     # Opening the file and writing the content to lines array
     with open(path) as f:
@@ -63,7 +30,6 @@ if __name__ == '__main__':
     lines.remove(line)
     graph.N = N
 
-
     # Getting the edge count from the data
     line = lines[0]
     E = int(line)
@@ -76,46 +42,77 @@ if __name__ == '__main__':
     lines.remove(line)
     graph.M = M
 
-    max_kingdom = 0
-    for i in range(N):
+    node_lines = lines[:N]
+    edge_lines = lines[N:]
 
-        line = lines[0]
+    max_kingdom = 0
+    i = 0
+    for line in node_lines:
 
         info = line.split()
+        id = int(info[0])
+        kingdom = int(info[1])
 
-        node = n.Node(int(info[0]), int(info[1]), [], False)
+        node = n.Node(id, kingdom, [], False)
 
-        graph.add_node(node)
+        graph.nodes.append(node)
         print("Node added :", i)
-        lines.remove(line)
-
-        if int(info[1]) > max_kingdom:
-            max_kingdom = int(info[1])
+        i += 1
+        if kingdom > max_kingdom:
+            max_kingdom = kingdom
 
     graph.K = max_kingdom
 
     j = 0
-    for line in lines:
-
+    for line in edge_lines:
         info = line.split()
+        src = int(info[0])
+        dst = int(info[1])
 
-        edge = e.Edge(int(info[0]), int(info[1]))
-        graph.add_edge(edge)
+        edge = e.Edge(src, dst)
+        graph.edges.append(edge)
         print("Edge added :", j)
 
-        graph.add_neighbor(int(info[0]), int(info[1]))
-        graph.add_neighbor(int(info[1]), int(info[0]))
         j += 1
 
-    graph.write_nodes()
+    graph.neighbors_from_edges()
+    return graph
 
-    graph.sort_nodes()
-    graph.write_nodes()
-    graph.info()
+    print("Input reading finished in %.8s seconds" % (time.time() - start_time))
 
-    print("Finished in %.6s seconds" % (time.time() - start_time))
+if __name__ == '__main__':
 
+    path = "C:\\Users\\doruk\\Desktop\\comp-305-group-8-project\\test3_new.txt"
 
+    graph = read_txt(path)
+    testGraph = g.Graph()
+
+    node0 = n.Node(0, 0, [0, 1, 1, 0], False)
+    testGraph.add_node(node0)
+
+    node1 = n.Node(1, 1, [1, 0, 0, 0], False)
+    testGraph.add_node(node1)
+
+    node2 = n.Node(2, 2, [1, 0, 0, 1], False)
+    testGraph.add_node(node0)
+
+    node3 = n.Node(3, 0, [0, 1, 1, 0], False)
+    testGraph.add_node(node3)
+
+    node4 = n.Node(4, 1, [1, 1, 0, 0], False)
+    testGraph.add_node(node4)
+
+    edge01 = e.Edge(0, 1)
+    testGraph.add_edge(edge01)
+
+    edge02 = e.Edge(0, 2)
+    testGraph.add_edge(edge02)
+
+    edge05 = e.Edge(0, 5)
+    testGraph.add_edge(edge05)
+
+    edge27 = e.Edge(2, 7)
+    testGraph.add_edge(edge27)
 
 
 

@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import Edge as e
 
 
 class Graph:
@@ -87,15 +88,62 @@ class Graph:
 
     def sort_nodes(self):
 
-        new_nodes = [0] * self.N
+        self.nodes = sorted(self.nodes, key=lambda x: x.id)
+
+    def sort_edges(self):
+
+        self.edges = sorted(self.edges, key=lambda x: x.src)
+
+    def neighbors_from_edges(self):
+
+        adj_list = []
+        i = 0
+        for edge in self.edges:
+            print("Edge addition completed : ", i)
+            src = edge.src
+            dst = edge.dst
+
+            adj_list.append([src, dst])
+            adj_list.append([dst, src])
+            i += 1
+
+        adj_list = sorted(adj_list, key=lambda x: x[0])
+
+        neighbor_dict = {}
+
+        index = 0
+        for src in range(self.N):
+
+            neighbor_list = []
+            while adj_list[index][0] == src:
+
+                neighbor_list.append(adj_list[index][1])
+                index += 1
+
+                if index > self.E * 2 - 1:
+                    break
+
+            print("Neighbor list found : ", src)
+            neighbor_dict[src] = neighbor_list
+
+        self.sort_nodes()
 
         for node in self.nodes:
+            print(node.id, "completed neighboring")
+            node.neighbors = neighbor_dict[node.id]
 
-            node.sort_neighbors()
-            id = node.id
-            new_nodes[id] = node
 
-        self.nodes = new_nodes
+
+
+
+
+
+
+
+
+
+
+
 
     def visualize(self):
 
