@@ -1,6 +1,11 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
+
 class Graph:
-    nodes = []
-    edges = []
+    def __init__(self):
+        self.nodes = []
+        self.edges = []
 
     def add_node(self, node):
 
@@ -33,3 +38,14 @@ class Graph:
 
         else:
             print("Edge is not in edge list")
+
+    def visualize(self):
+
+        visedges = []
+        for x in self.edges:
+            visedges.append([x.src, x.dst])
+
+        G = nx.Graph()
+        G.add_edges_from(visedges)
+        nx.draw_networkx(G)
+        plt.show()
