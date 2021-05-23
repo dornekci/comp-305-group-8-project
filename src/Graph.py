@@ -101,15 +101,17 @@ class Graph:
         adj_list = []
         i = 0
         for edge in self.edges:
-            print("Edge addition completed : ", i)
+
             src = edge.src
             dst = edge.dst
 
             adj_list.append([src, dst])
             adj_list.append([dst, src])
+
+            print("Edge addition completed : ", i)
             i += 1
 
-        adj_list = sorted(adj_list, key=lambda x: x[0])
+        adj_list = sorted(adj_list, key = lambda x: x[0])
 
         neighbor_dict = {}
 
@@ -131,7 +133,7 @@ class Graph:
         self.sort_nodes()
 
         for node in self.nodes:
-            print(node.id, "completed neighboring")
+            print("Completed neighboring", node.id)
             node.neighbors = neighbor_dict[node.id]
 
 
