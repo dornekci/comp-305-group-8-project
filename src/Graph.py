@@ -16,6 +16,8 @@ class Graph:
 
     def info(self):
 
+        print("\nGraph Information:")
+        print("------------------")
         print("Nodes : ", self.N, "\nEdges : ", self.E, "\nRiot Size : ", self.M, "\nKingdoms : ", self.K)
 
     def add_node(self, node):
@@ -131,18 +133,6 @@ class Graph:
         for node in self.nodes:
             print(node.id, "completed neighboring")
             node.neighbors = neighbor_dict[node.id]
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     def visualize(self):
