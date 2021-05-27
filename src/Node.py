@@ -28,3 +28,7 @@ class Node:
     def sort_neighbors(self):
 
         self.neighbors.sort()
+
+    def get_neighbors(self):
+
+        return self.neighbors
