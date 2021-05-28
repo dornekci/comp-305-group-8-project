@@ -32,3 +32,5 @@ class Node:
     def get_neighbors(self):
 
         return self.neighbors
+    def get_id(self):
+        return self.id

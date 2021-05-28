@@ -57,5 +57,23 @@ class Solutioner:
 
                     self.find_combination(new_node, branch_array)
 
+    def findAllCombinations(self):
+        for node in self.graph.nodes:
+            self.all_combinations.extend(self.findPaths(node, 3))
 
+    def findPaths(self, node, length):
+        if length == 0:
+            return [[node]]
+        paths = [[node] + path for neighbor in self.graph.get_node(node.get_id()).get_neighbors() for path in
+                 self.findPaths(self.graph.get_node(neighbor), length - 1) if node not in path]
+        return paths
 
+    def findPaths2(self, node, length):
+        if length == 0:
+            return [[node]]
+        paths = []
+        for neighbor in self.graph.get_node(node.get_id()).get_neighbors():
+            for path in self.findPaths2(self.graph.get_node(neighbor), length - 1):
+                if node not in path:
+                    paths.append([node] + path)
+        return paths
