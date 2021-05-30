@@ -59,11 +59,13 @@ class Solutioner:
 
     def findAllCombinations(self):
         for node in self.graph.nodes:
-            self.all_combinations.extend(self.findPaths(node, 3))
+            self.all_combinations.extend(self.findPaths(node, self.M - 1))
 
     def findPaths(self, node, length):
+
         if length == 0:
             return [[node]]
+
         paths = [[node] + path for neighbor in self.graph.get_node(node.get_id()).get_neighbors() for path in
                  self.findPaths(self.graph.get_node(neighbor), length - 1) if node not in path]
         return paths

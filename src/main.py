@@ -21,15 +21,15 @@ if __name__ == '__main__':
     solver.findAllCombinations()
 
     for comb in solver.all_combinations:
-        for cities in comb:
-           print(cities.get_id())
-        print("\n")
+
+        print([cities.get_id() for cities in comb])
+
     # print("M = ", graph.M)
     # print(solver.start_node.id)
     print("0'DAN OLAN KOMBİNASYONLAR:\n")
-    for comb in solver.findPaths(graph.get_node(0), 3):
-        for elements in comb:
-            print(elements.get_id())
-        print("\n")
+    for comb in solver.findPaths(graph.get_node(0), graph.M - 1):
+
+        print([elements.get_id() for elements in comb])
+
 
 
