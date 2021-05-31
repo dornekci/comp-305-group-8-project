@@ -14,6 +14,9 @@ class Graph:
         self.M = 0
         self.K = 0
 
+        self.neighbor_dict = {}
+        self.kingdom_dict = {}
+
     def info(self):
 
         print("\nGraph Information:")
@@ -134,6 +137,23 @@ class Graph:
         for node in self.nodes:
             print("Completed neighboring", node.id)
             node.neighbors = neighbor_dict[node.id]
+
+    def neighbors_as_dict(self):
+
+        for node in self.nodes:
+
+            self.neighbor_dict[node.get_id()] = node.get_neighbors()
+
+        print("Neighbors_as_dict completed")
+
+    def kingdoms_as_dict(self):
+
+        for node in self.nodes:
+
+            self.kingdom_dict[node.get_id()] = node.kingdom
+
+        print("Kingdoms_as_dict completed")
+
 
     def visualize(self):
 

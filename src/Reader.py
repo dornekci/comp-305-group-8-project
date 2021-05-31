@@ -2,14 +2,11 @@ import Node as n
 import Edge as e
 import Graph as g
 import numpy as np
-import time
+
 
 class Reader:
 
     def read_from_path(self, path):
-
-        # For checking the runtime of the program
-        start_time = time.time()
 
         graph = g.Graph()
 
@@ -59,10 +56,12 @@ class Reader:
             j += 1
 
         graph.neighbors_from_edges()
+        graph.neighbors_as_dict()
+        graph.kingdoms_as_dict()
+
 
         print()
         graph.info()
-        print("\nInput reading finished in %.8s seconds" % (time.time() - start_time))
 
         return graph
 

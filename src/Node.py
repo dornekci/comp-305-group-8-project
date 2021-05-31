@@ -34,3 +34,6 @@ class Node:
         return self.neighbors
     def get_id(self):
         return self.id
+
+    def get_kingdom(self):
+        return self.kingdom
