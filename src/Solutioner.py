@@ -22,44 +22,40 @@ class Solutioner:
         # For checking the runtime of the program
         start_time = time.time()
 
-        graph = self.graph
-        self.start_node = random.choice(graph.nodes)
-        self.find_combination(self.start_node, [self.start_node.id])
+        self.findAllCombinations()
 
-        print("\nInput reading finished in %.8s seconds" % (time.time() - start_time))
+        solution_path = []
+        solution_neighbors = []
+        solution_neighbor_count = 99999999
 
-    def find_combination(self, node, current_array):
+        i = 1
+        total = len(self.all_combinations)
+        for comb in self.all_combinations:
 
-        if len(current_array) == self.M:
-            self.all_combinations.append(current_array)
-            return 0
+            comb_array = [cities.get_id() for cities in comb]
+            neighbors = self.getDistinctNeighbors(comb_array)
+            neighbor_count = len(neighbors)
 
-        else:
+            print("This is ", i, "'th comb done from total ", total, " nodes")
+            i += 1
+            if len(solution_path) == 0 or solution_neighbor_count > neighbor_count:
+                solution_path = comb_array
+                solution_neighbors = neighbors
+                solution_neighbor_count = neighbor_count
 
-            neighbors = node.neighbors
+        self.print_array(solution_path)
 
-            has_neighbor = False
-            for neighbor in neighbors:
-
-                if neighbor not in current_array:
-                    has_neighbor = True
-
-            if has_neighbor:
-                for neighbor in neighbors:
-
-                    if neighbor in current_array:
-                        continue
-
-                    new_node = self.graph.get_node(neighbor)
-
-                    branch_array = current_array
-                    branch_array.append(new_node)
-
-                    self.find_combination(new_node, branch_array)
+        print("\nSolution finding finished in %.8s seconds" % (time.time() - start_time))
 
     def findAllCombinations(self):
+
+        i = 1
+        total = len(self.graph.nodes)
         for node in self.graph.nodes:
-            self.all_combinations.extend(self.findPaths(node, self.M - 1))
+            print("This is ", i, "'th node done from total ", total, " nodes")
+            i += 1
+
+            self.all_combinations.extend(self.findPaths2(node, self.M - 1))
 
     def findPaths(self, node, length):
 
@@ -71,11 +67,33 @@ class Solutioner:
         return paths
 
     def findPaths2(self, node, length):
+
         if length == 0:
             return [[node]]
+
         paths = []
         for neighbor in self.graph.get_node(node.get_id()).get_neighbors():
             for path in self.findPaths2(self.graph.get_node(neighbor), length - 1):
                 if node not in path:
                     paths.append([node] + path)
+
         return paths
+
+    def getDistinctNeighbors(self, array):
+
+        allNeighbors = []
+
+        for city_id in array:
+            city_node = self.graph.get_node(city_id)
+            neighbors = city_node.get_neighbors()
+
+            for neighbor in neighbors:
+
+                if (neighbor not in allNeighbors) & (neighbor not in array):
+                    allNeighbors.append(neighbor)
+
+        return allNeighbors
+
+    def print_array(self, array):
+
+        print([element for element in array])
