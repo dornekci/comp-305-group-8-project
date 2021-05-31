@@ -11,7 +11,10 @@ import Solutioner2 as s2
 
 if __name__ == '__main__':
 
-    path = "C:\\Users\\doruk\\Desktop\\comp-305-group-8-project\\test3_new.txt"
+    answer_1 = [3, 4, 5, 6]
+    answer_2 = [38, 126, 74, 215, 183, 109, 137, 64, 91, 218, 146, 227, 47, 29, 224, 119, 167, 145, 73, 134]
+
+    path = "C:\\Users\\doruk\\Desktop\\comp-305-group-8-project\\test1_new.txt"
 
     start_time = time.time()
 
@@ -28,6 +31,8 @@ if __name__ == '__main__':
     print("\nSolving the problem finished in %.10s seconds" % (time.time() - start_time_solver))
 
     print("Whole problem finished in %.10s seconds\n" % (time.time() - start_time))
+
+
 
 
 
