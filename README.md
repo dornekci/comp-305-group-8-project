@@ -21,3 +21,10 @@
 * A more efficient algorithm was found for the 2nd file, but it doesn't work for the 3rd file. 
 * Find a more efficient algorithm that can work in the third file.
  
+## How to Run the Code:
+
+
+## Result of the Test Cases:
+
+
+## Summary of Final Algorithm:
