@@ -27,4 +27,4 @@
 ## Result of the Test Cases:
 
 
-## Summary of Final Algorithm:
+## Summary of the Final Algorithm:
