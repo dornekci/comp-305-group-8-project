@@ -17,6 +17,9 @@ class Solutioner:
         self.all_combinations = []
         self.start_node = None
 
+        self.neighbor_dict = self.graph.neighbor_dict
+        self.kingdom_dict = self.graph.kingdom_dict
+
     def solve_graph(self):
 
         self.findAllCombinations()
@@ -31,16 +34,17 @@ class Solutioner:
 
             comb_array = [cities.get_id() for cities in comb]
             neighbors = self.getDistinctNeighbors(comb_array)
-            neighbor_count = len(neighbors)
+            distinct_neighbor_count = self.get_distinct_neighbor_count_from_neighbors(neighbors)
 
             print("This is ", i, "'th comb done from total ", total, " nodes")
             i += 1
-            if len(solution_path) == 0 or solution_neighbor_count > neighbor_count:
+            if len(solution_path) == 0 or solution_neighbor_count > distinct_neighbor_count:
                 solution_path = comb_array
                 solution_neighbors = neighbors
-                solution_neighbor_count = neighbor_count
+                solution_neighbor_count = distinct_neighbor_count
 
         self.print_array(solution_path)
+        print("Distinct neighbor count : ", solution_neighbor_count)
 
 
     def findAllCombinations(self):
@@ -74,6 +78,20 @@ class Solutioner:
                     paths.append([node] + path)
 
         return paths
+
+    # Function for getting distinct kingdom count from a set of cities
+    def get_distinct_neighbor_count_from_neighbors(self, neighbors):
+
+        kingdom_array = []
+
+        for neighbor in neighbors:
+
+            neighbor_kingdom = self.kingdom_dict[neighbor]
+
+            if neighbor_kingdom not in kingdom_array:
+                kingdom_array.append(neighbor_kingdom)
+
+        return len(kingdom_array)
 
     def getDistinctNeighbors(self, array):
 
