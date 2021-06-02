@@ -19,9 +19,6 @@ class Solutioner:
 
     def solve_graph(self):
 
-        # For checking the runtime of the program
-        start_time = time.time()
-
         self.findAllCombinations()
 
         solution_path = []
@@ -45,7 +42,6 @@ class Solutioner:
 
         self.print_array(solution_path)
 
-        print("\nSolution finding finished in %.8s seconds" % (time.time() - start_time))
 
     def findAllCombinations(self):
 
