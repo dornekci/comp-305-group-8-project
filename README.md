@@ -17,9 +17,9 @@
 * ~~Visualiaze the given first test file.~~ 
 * ~~Investigate if the problem is np.~~ 
 * ~~Brute Force only solved the first test file, find a more effective solution.~~
-* Begin the presentation preparations.
-* A more efficient algorithm was found for the 2nd file, but it doesn't work for the 3rd file. 
-* Find a more efficient algorithm that can work in the third file.
+* ~~Begin the presentation preparations.~~
+* ~~A more efficient algorithm was found for the 2nd file, but it doesn't work for the 3rd file.~~
+* Find a more efficient algorithm that can work in the third file.(Could not find)
  
 ## How to Run the Code:
 
