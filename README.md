@@ -32,4 +32,4 @@
 
 
 ## Summary of the Final Algorithm:
-* It decreases the run time significantly. However, the accuracy also decreased. Still, it cannot execute test file 3 in desirable time. 
+* Final algorithms selected as the 2nd one. While giving the accurate results, it also works for testfile1&2 in a shorter amount of time. Unfortunately, its complexity is too high for testfile 3.
