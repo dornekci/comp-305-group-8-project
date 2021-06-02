@@ -6,6 +6,7 @@ class MutualNode:
         self.kingdoms = kingdoms
         self.neighbors = neighbors
         self.citiesIncluded = citiesIncluded
+        self.citiesIncludedCount = len(citiesIncluded)
         self.neighbor_count = len(neighbors)
 
     def get_neighbor_count(self):
@@ -13,6 +14,15 @@ class MutualNode:
 
     def update_neighbor_count(self):
         self.neighbor_count = len(self.neighbors)
+
+    def get_included_cities(self):
+        return self.citiesIncluded
+
+    def get_included_cities_count(self):
+        return self.citiesIncludedCount
+
+    def update_cities_included_count(self):
+        self.citiesIncludedCount = len(self.citiesIncluded)
 
     def sort_neighbors(self):
         self.neighbors.sort()
@@ -26,5 +36,4 @@ class MutualNode:
     def get_kingdom(self):
         return self.kingdoms
 
-    def get_included_cities(self):
-        return self.citiesIncluded
+

@@ -43,7 +43,6 @@ class Solutioner3:
         self.neighbor_dict = self.graph.neighbor_dict
         self.kingdom_dict = self.graph.kingdom_dict
 
-
         return 0
 
     def compress_graph_first_time(self):
@@ -143,6 +142,7 @@ class Solutioner3:
 
             node.neighbors = neighbors
             node.update_neighbor_count()
+            node.update_cities_included_count()
 
     def pair_all_nodes(self):
 

@@ -38,7 +38,8 @@ if __name__ == '__main__':
     solver3.solve_graph()
 
     for node in solver3.graph.nodes:
-        print("Node : ", node.get_id(), " Kingdoms : ", node.get_kingdom(), "Neighbors : ", node.get_neighbors(), " Included Cities : ", node.get_included_cities())
+        print("Node : ", node.get_id(), " Kingdoms : ", node.get_kingdom(), "Neighbors : ", node.get_neighbors(),
+              " Included Cities : ", node.get_included_cities(), " City count : ", node.get_included_cities_count())
 
 
 
