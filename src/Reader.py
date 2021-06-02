@@ -59,8 +59,6 @@ class Reader:
         graph.neighbors_as_dict()
         graph.kingdoms_as_dict()
 
-
-        print()
         graph.info()
 
         return graph

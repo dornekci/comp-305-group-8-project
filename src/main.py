@@ -6,8 +6,9 @@ import Graph as g
 import Reader as r
 import numpy as np
 import time
-import Solutioner as s
+import Solutioner as s1
 import Solutioner2 as s2
+import Solutioner3 as s3
 
 if __name__ == '__main__':
 
@@ -31,6 +32,16 @@ if __name__ == '__main__':
     print("\nSolving the problem finished in %.10s seconds" % (time.time() - start_time_solver))
 
     print("Whole problem finished in %.10s seconds\n" % (time.time() - start_time))
+
+    solver3 = s3.Solutioner3(graph)
+
+    solver3.solve_graph()
+
+    for node in solver3.graph.nodes:
+        print("Node : ", node.get_id(), " Kingdoms : ", node.get_kingdom(), "Neighbors : ", node.get_neighbors(), " Included Cities : ", node.get_included_cities())
+
+
+
 
 
 

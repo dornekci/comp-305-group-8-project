@@ -137,6 +137,7 @@ class Graph:
         for node in self.nodes:
             print("Completed neighboring", node.id)
             node.neighbors = neighbor_dict[node.id]
+            node.update_neighbor_count()
 
     def neighbors_as_dict(self):
 
@@ -150,7 +151,7 @@ class Graph:
 
         for node in self.nodes:
 
-            self.kingdom_dict[node.get_id()] = node.kingdom
+            self.kingdom_dict[node.get_id()] = node.get_kingdom()
 
         print("Kingdoms_as_dict completed")
 

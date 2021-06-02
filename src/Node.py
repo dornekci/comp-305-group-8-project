@@ -6,6 +6,7 @@ class Node:
         self.kingdom = kingdom
         self.neighbors = neighbors
         self.isInKingdom = isInKingdom
+        self.neighbor_count = len(neighbors)
 
     # Function for adding a neighbor to neighbor list
     def add_neighbor(self, neighbor):
@@ -25,6 +26,14 @@ class Node:
         else:
             print("Neighbor is not in the neighbor list")
 
+    def get_neighbor_count(self):
+
+        return self.neighbor_count
+
+    def update_neighbor_count(self):
+
+        self.neighbor_count = len(self.neighbors)
+
     def sort_neighbors(self):
 
         self.neighbors.sort()
@@ -32,6 +41,7 @@ class Node:
     def get_neighbors(self):
 
         return self.neighbors
+
     def get_id(self):
         return self.id
 
