@@ -59,8 +59,6 @@ class Solutioner3:
                     best_kingdom = path
                     best_kingdom_distinct_count = distinct_count
 
-                print("Best path found from : ", node.get_id())
-
         included_cities = self.get_current_kingdom_real_cities(best_kingdom)
         print("\nBest kingdom : ", best_kingdom)
         print("Included cities : ", included_cities)
@@ -81,7 +79,6 @@ class Solutioner3:
         while len(included_cities) < self.M:
 
             best_neighbor = self.select_best_neighbor(current_kingdom)
-
 
             if best_neighbor is None:
                 break
@@ -180,9 +177,7 @@ class Solutioner3:
         new_graph = g.Graph()
 
         pairs = self.pair_all_nodes()
-        print("Pairing completed")
 
-        i = 1
         for key in pairs:
 
             pair = pairs[key]
@@ -210,8 +205,6 @@ class Solutioner3:
             self.included_cities_dict[id] = pair
             new_node = mn.MutualNode(id, kingdoms, neighbors, pair)
             new_graph.add_node(new_node)
-            print("Pair ", i, " finished")
-            i += 1
 
         self.graph = new_graph
         self.update_neighbors()
@@ -298,7 +291,6 @@ class Solutioner3:
     def pair_all_nodes(self):
 
         self.sort_graph_by_neighbor_count()
-        print("Graph sorted by neighbor count.")
         paired_nodes = []
 
         pairs = {}
@@ -330,7 +322,6 @@ class Solutioner3:
                     paired_nodes.append(node_id)
                     paired_nodes.append(found_neighbor)
 
-
                 else:
 
                     pair = [node_id]
@@ -338,7 +329,6 @@ class Solutioner3:
                     i += 1
 
                     paired_nodes.append(node_id)
-
 
         return pairs
 
@@ -371,8 +361,3 @@ class Solutioner3:
 
         print([element for element in array])
 
-    def check(self):
-
-        print("Current real cities in node 0: ")
-        node_0 = self.graph.nodes[0]
-        self.print_array(node_0.get_included_cities())

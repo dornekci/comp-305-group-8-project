@@ -20,7 +20,10 @@ class Ahmet:
         test_file_input = int(input("Write '1' for test1\nWrite '2' for test2\nWrite '3' for "
                                     "test3\nSelect the test input :"))
         algorithm_input = int(input("Write '1' for Algorithm 1\nWrite '2' for Algorithm 2\nWrite '3' for "
-                                    "Algorithm 3\n(Don't select algorithm 3 yet...\nSelect the algorithm :"))
+                                    "Algorithm 3\nSelect the algorithm :"))
+
+        if algorithm_input == 2:
+            version_input = int(input("Write '1' for version 1\nWrite '2' for version 2\nSelect version of algorithm 2 :"))
 
         path = None
         if test_file_input == 1:
@@ -38,7 +41,9 @@ class Ahmet:
 
         graph = reader.read_from_path(path)
 
-        print("\nInput reading finished in %.10s seconds\n" % (time.time() - start_time))
+        input_reading_time = time.time() - start_time
+
+        start_time_solver = time.time()
 
         solver = None
         if algorithm_input == 1:
@@ -50,10 +55,22 @@ class Ahmet:
         elif algorithm_input == 3:
             solver = s3.Solutioner3(graph)
 
-        start_time_solver = time.time()
+        if algorithm_input == 2:
 
-        solver.solve_graph()
+            if version_input == 1:
+                solver.solve_graph_1()
 
-        print("\nSolving the problem finished in %.10s seconds" % (time.time() - start_time_solver))
+            elif version_input == 2:
+                solver.solve_graph_2()
 
-        print("Whole problem finished in %.10s seconds\n" % (time.time() - start_time))
+        else:
+            solver.solve_graph()
+
+        solving_time = time.time() - start_time_solver
+        total_time = solving_time + input_reading_time
+
+        print("\nInput reading finished in %.8s seconds" % input_reading_time)
+
+        print("Solving the problem finished in %.8s seconds" % solving_time)
+
+        print("Whole problem finished in %.8s seconds\n" % total_time)

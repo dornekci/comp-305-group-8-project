@@ -22,7 +22,34 @@ class Solutioner2:
 
     # Function for solving the problem by finding the best path from every node
     # and getting the best one from them
-    def solve_graph(self):
+    def solve_graph_1(self):
+
+        best_kingdom = None
+        best_kingdom_distinct_count = None
+
+        visited_cities = []
+        for node in self.graph.nodes:
+
+            self.node += 1
+            if node.get_id not in visited_cities:
+
+                path = self.get_best_path_from_node(node.get_id())
+                distinct_count = self.get_distinct_neighbor_count_from_neighbors(self.get_neighbors_of_kingdom(path))
+                visited_cities += path
+
+                if best_kingdom is None or best_kingdom_distinct_count > distinct_count:
+
+                    best_kingdom = path
+                    best_kingdom_distinct_count = distinct_count
+
+        print("\nSolution kingdom is :")
+        self.print_array(best_kingdom)
+        print("Distinct neighbor count : ", best_kingdom_distinct_count)
+        return best_kingdom
+
+    # Function for solving the problem by finding the best path from every node
+    # and getting the best one from them
+    def solve_graph_2(self):
 
         best_kingdom = None
         best_kingdom_distinct_count = None
@@ -42,10 +69,8 @@ class Solutioner2:
                     best_kingdom = path
                     best_kingdom_distinct_count = distinct_count
 
-                print("Best path found from : ", node.get_id())
-
-
-        print("\nBest kingdom : ", best_kingdom)
+        print("\nSolution kingdom is :")
+        self.print_array(best_kingdom)
         print("Distinct neighbor count : ", best_kingdom_distinct_count)
         return best_kingdom
 
@@ -60,8 +85,6 @@ class Solutioner2:
 
             best_neighbor = self.select_best_neighbor(current_kingdom)
             current_kingdom.append(best_neighbor)
-
-            print("Node : ", self.node, " Current Kingdom Size: ", len(current_kingdom))
 
         return current_kingdom
 

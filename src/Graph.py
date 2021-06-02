@@ -102,16 +102,12 @@ class Graph:
     def neighbors_from_edges(self):
 
         adj_list = []
-        i = 0
         for edge in self.edges:
             src = edge.src
             dst = edge.dst
 
             adj_list.append([src, dst])
             adj_list.append([dst, src])
-
-            print("Edge addition completed : ", i)
-            i += 1
 
         adj_list = sorted(adj_list, key=lambda x: x[0])
 
@@ -129,32 +125,24 @@ class Graph:
                 if index > self.E * 2 - 1:
                     break
 
-            print("Neighbor list found : ", src)
             neighbor_dict[src] = neighbor_list
 
         self.sort_nodes()
 
         for node in self.nodes:
-            print("Completed neighboring", node.id)
+
             node.neighbors = neighbor_dict[node.id]
             node.update_neighbor_count()
 
     def neighbors_as_dict(self):
 
         for node in self.nodes:
-
             self.neighbor_dict[node.get_id()] = node.get_neighbors()
-
-        print("Neighbors_as_dict completed")
 
     def kingdoms_as_dict(self):
 
         for node in self.nodes:
-
             self.kingdom_dict[node.get_id()] = node.get_kingdom()
-
-        print("Kingdoms_as_dict completed")
-
 
     def visualize(self):
 

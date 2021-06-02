@@ -36,24 +36,20 @@ class Solutioner:
             neighbors = self.getDistinctNeighbors(comb_array)
             distinct_neighbor_count = self.get_distinct_neighbor_count_from_neighbors(neighbors)
 
-            print("This is ", i, "'th comb done from total ", total, " nodes")
             i += 1
             if len(solution_path) == 0 or solution_neighbor_count > distinct_neighbor_count:
                 solution_path = comb_array
                 solution_neighbors = neighbors
                 solution_neighbor_count = distinct_neighbor_count
 
+        print("\nSolution kingdom is :")
         self.print_array(solution_path)
         print("Distinct neighbor count : ", solution_neighbor_count)
 
-
     def findAllCombinations(self):
 
-        i = 1
         total = len(self.graph.nodes)
         for node in self.graph.nodes:
-            print("This is ", i, "'th node done from total ", total, " nodes")
-            i += 1
 
             self.all_combinations.extend(self.findPaths2(node, self.M - 1))
 
